@@ -3,12 +3,13 @@ from flask import jsonify
 import secrets
 from flask import Flask, render_template, flash, redirect, url_for, session, logging, request, session
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg']
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
-app.secret_key = "m4xpl0it"
+app.secret_key = "9gN}fWZhE.ab9y."
 
 
 def make_token():
@@ -137,7 +138,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Load the dataset into a pandas dataframe
-df = pd.read_excel('dataset.xlsx')
+dataset_path = os.path.join(os.path.dirname(__file__), 'dataset.xlsx')
+df = pd.read_excel(dataset_path) 
 
 # Get all unique symptoms
 symptoms = set()
