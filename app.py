@@ -272,8 +272,8 @@ def get_symtoms(user_disease):
 
 from duckduckgo_search import DDGS
 
-def getDiseaseInfo(keywords):
-    results = DDGS(keywords, region='wt-wt', safesearch='Off', time='y')
+async def getDiseaseInfo(keywords):
+    results = await DDGS.text(keywords, max_results=5)
     return results[0]['body']
 
 
